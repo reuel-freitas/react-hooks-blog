@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "./Components/Button";
 import { Input } from './Components/Input'
+import { Post } from "./Components/Post";
+import { Warning } from "./Components/Warning";
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -39,26 +42,24 @@ function App() {
       <section style={{ width: '100%', height: 'auto' }}>
         <div style={{ padding: 10 }}>
           <h2 style={{ color: '#eee' }}>Search for posts</h2>
-          <input type="search" onChange={handleSearchPost} placeholder="Type to search..." autoFocus style={{ marginTop: 20, width: 220, height: 30, padding: 10 }} />
+          <Input handleSearchPost={handleSearchPost} />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr)', gap: 20, padding: 10 }}>
           {filteredPosts.filter((item, index) => index < postsLimit).map(post =>
-            <Input key={post.id} post={post} />
+            <Post key={post.id} post={post} />
           )}
           {filteredPosts.length === 0 &&
-            <div style={{}}>
-              <p style={{ color: '#eee' }}>Não foram encontrados posts com este filtro...</p>
-            </div>
+            <Warning warning="Não foram encontrados posts com este filtro..." />
           }
         </div>
         {(filteredPosts.length === 0 || postsLimit < filteredPosts.length) &&
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-            <button onClick={handlePostsLimit} style={{ maxWidth: 220, width: '100%', height: 30, padding: 3, borderRadius: 17 }}>Load more posts</button>
+            <Button handlePostsLimit={handlePostsLimit} description="Load more posts" />
           </div>
         }
         {postsLimit === posts.length &&
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-            <p>Não há mais posts =(</p>
+            <Warning warningMsg="Não há mais posts =(" />
           </div>
         }
       </section>
