@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { Button } from "./Components/Button";
-import { Input } from './Components/Input'
-import { Post } from "./Components/Post";
-import { Warning } from "./Components/Warning";
+import { Button } from "./Components/Button/Button";
+import { Input } from './Components/Input/Input'
+import { Post } from "./Components/PostCard/Post";
+import { Warning } from "./Components/Warning/Warning";
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -54,7 +54,7 @@ function App() {
         </div>
         {(filteredPosts.length === 0 || postsLimit < filteredPosts.length) &&
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-            <Button handlePostsLimit={handlePostsLimit} description="Load more posts" />
+            <Button onClick={handlePostsLimit} description="Load more posts" />
           </div>
         }
         {postsLimit === posts.length &&
