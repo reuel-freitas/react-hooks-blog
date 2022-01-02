@@ -1,4 +1,4 @@
-# React App to learn about hooks and testing
+# Posts App in React to learn about hooks and testing
 
 ## Learnings
 
