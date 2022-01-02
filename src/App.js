@@ -45,18 +45,16 @@ function App() {
           <Input handleSearchPost={handleSearchPost} />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr)', gap: 20, padding: 10 }}>
-          {filteredPosts.filter((item, index) => index < postsLimit).map(post =>
-            <Post key={post.id} post={post} />
+          {filteredPosts.filter((item, index) => index < postsLimit).map(({id, cover, title, body}) =>
+            <Post key={id} cover={cover} title={title} body={body} />
           )}
           {filteredPosts.length === 0 &&
             <Warning warning="Não foram encontrados posts com este filtro..." />
           }
         </div>
-        {(filteredPosts.length === 0 || postsLimit < filteredPosts.length) &&
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-            <Button onClick={handlePostsLimit} description="Load more posts" />
-          </div>
-        }
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+          <Button onClick={handlePostsLimit} description="Load more posts" disabled={filteredPosts.length === 0 || postsLimit < filteredPosts.length} />
+        </div>
         {postsLimit === posts.length &&
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
             <Warning warningMsg="Não há mais posts =(" />

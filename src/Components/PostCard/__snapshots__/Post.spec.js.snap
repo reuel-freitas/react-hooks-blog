@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Post /> should match snapshot 1`] = `
+<div
+  style="background-color: rgba(110, 110, 110, 0.431); padding: 10px; border-radius: 7px;"
+>
+  <img
+    alt="title 1"
+    src="img/img.png"
+    style="max-width: 100%; border-radius: 7px;"
+  />
+  <h3
+    style="color: rgb(238, 238, 238); text-align: left;"
+  >
+    title 1
+  </h3>
+  <p
+    style="color: rgb(238, 238, 238); text-align: left;"
+  >
+    body 1
+  </p>
+</div>
+`;
